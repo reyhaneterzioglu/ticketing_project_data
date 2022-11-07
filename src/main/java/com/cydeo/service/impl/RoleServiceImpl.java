@@ -4,6 +4,7 @@ import com.cydeo.dto.RoleDTO;
 import com.cydeo.mapper.RoleMapper;
 import com.cydeo.service.RoleService;
 import com.cydeo.repository.RoleRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
