@@ -13,8 +13,6 @@ import java.util.stream.Collectors;
 @Service
 //@AllArgsConstructor
 public class RoleServiceImpl implements RoleService {
-
-
     private final RoleRepository roleRepository;
     private final RoleMapper roleMapper;
 

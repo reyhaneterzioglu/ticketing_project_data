@@ -38,7 +38,6 @@ public class UserServiceImpl implements UserService {
         List<User> userList = userRepository.findAllByIsDeletedOrderByFirstNameDesc(false);
 
         return userList.stream().map(userMapper::convertToDto).collect(Collectors.toList());
-
     }
 
     @Override

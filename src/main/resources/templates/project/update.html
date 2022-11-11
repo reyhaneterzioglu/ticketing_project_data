@@ -37,8 +37,10 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="projectname" class="col-form-label">Project Name</label>
-                                                    <input id="projectname" th:field="*{projectName}" type="text" class="form-control" placeholder="project name">
-                                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('projectName')}">
+                                                    <input id="projectname" th:field="*{projectName}" type="text"
+                                                           class="form-control" placeholder="project name">
+                                                    <div class="invalid-feedback"
+                                                         th:if="${#fields.hasErrors('projectName')}">
                                                         <ul>
                                                             <li th:each="err : ${#fields.errors('projectName')}"
                                                                 th:text="${err}"></li>
@@ -51,8 +53,10 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="projectcode" class="col-form-label">Project Code</label>
-                                                    <input id="projectcode" th:field="*{projectCode}"  type="text" class="form-control" readonly placeholder="project code">
-                                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('projectCode')}">
+                                                    <input id="projectcode" th:field="*{projectCode}" type="text"
+                                                           class="form-control" readonly placeholder="project code">
+                                                    <div class="invalid-feedback"
+                                                         th:if="${#fields.hasErrors('projectCode')}">
                                                         <ul>
                                                             <li th:each="err : ${#fields.errors('projectCode')}"
                                                                 th:text="${err}"></li>
@@ -65,12 +69,15 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label>Assigned Manager</label>
-                                                    <select name="assignedmanager" th:field="*{assignedManager}" class="custom-select">
+                                                    <select name="assignedmanager" th:field="*{assignedManager}"
+                                                            class="custom-select">
                                                         <option th:value="''" th:text="Select"></option>
-                                                        <option th:each="manager : ${managers}" th:value="${manager.userName}"
-                                                                th:text = "${manager.firstName + ' ' + manager.lastName}"></option>
+                                                        <option th:each="manager : ${managers}"
+                                                                th:value="${manager.userName}"
+                                                                th:text="${manager.firstName + ' ' + manager.lastName}"></option>
                                                     </select>
-                                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('assignedManager')}">
+                                                    <div class="invalid-feedback"
+                                                         th:if="${#fields.hasErrors('assignedManager')}">
                                                         <ul>
                                                             <li th:each="err : ${#fields.errors('assignedManager')}"
                                                                 th:text="${err}"></li>
@@ -83,8 +90,10 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="startdate">Project Start Date</label>
-                                                    <input id="startdate" th:field="*{startDate}"  type="date" class="form-control">
-                                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('startDate')}">
+                                                    <input id="startdate" th:field="*{startDate}" type="date"
+                                                           class="form-control">
+                                                    <div class="invalid-feedback"
+                                                         th:if="${#fields.hasErrors('startDate')}">
                                                         <ul>
                                                             <li th:each="err : ${#fields.errors('startDate')}"
                                                                 th:text="${err}"></li>
@@ -95,8 +104,10 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="enddate">Project End Date</label>
-                                                    <input id="enddate" th:field="*{endDate}"  type="date" class="form-control">
-                                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('endDate')}">
+                                                    <input id="enddate" th:field="*{endDate}" type="date"
+                                                           class="form-control">
+                                                    <div class="invalid-feedback"
+                                                         th:if="${#fields.hasErrors('endDate')}">
                                                         <ul>
                                                             <li th:each="err : ${#fields.errors('endDate')}"
                                                                 th:text="${err}"></li>
@@ -109,8 +120,11 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="projectdetail">Project Detail</label>
-                                                    <textarea id="projectdetail" th:field="*{projectDetail}"  class="form-control" placeholder="project detail"></textarea>
-                                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('projectDetail')}">
+                                                    <textarea id="projectdetail" th:field="*{projectDetail}"
+                                                              class="form-control"
+                                                              placeholder="project detail"></textarea>
+                                                    <div class="invalid-feedback"
+                                                         th:if="${#fields.hasErrors('projectDetail')}">
                                                         <ul>
                                                             <li th:each="err : ${#fields.errors('projectDetail')}"
                                                                 th:text="${err}"></li>
@@ -122,7 +136,8 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="float-right">
-                                                    <button class="btn btn-success rounded-0" type="submit">Save</button>
+                                                    <button class="btn btn-success rounded-0" type="submit">Save
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -138,7 +153,6 @@
                     </div>
 
                 </div>
-
 
 
                 <!-- ------------------------TABLE START----------------------------- -->
@@ -171,11 +185,23 @@
                                                 <td th:text="${project.assignedManager.firstName + ' ' + project.assignedManager.lastName}"></td>
                                                 <td th:text="${project.projectStatus.value}"></td>
                                                 <td>
-                                                    <a th:if="${project.projectStatus.value != 'Completed'}" th:href="@{/project/update/{id}(id=${project.projectCode})}"><button type="button" class="btn btn-warning rounded-0">Update</button></a>
-                                                    <a th:if="${project.projectStatus.value == 'Completed'}" th:href="@{/project/update/{id}(id=${project.projectCode})}"><button type="button" class="btn btn-warning rounded-0 disabled-button">Update</button></a>
-                                                    <a th:href="@{/project/delete/{id}(id=${project.projectCode})}"><button type="button" class="btn btn-danger rounded-0">Delete</button></a>
-                                                    <a th:if="${project.projectStatus.value != 'Completed'}" th:href="@{/project/complete/{id}(id=${project.projectCode})}"><button type="button" class="btn btn-info rounded-0">Complete</button></a>
-                                                    <a th:if="${project.projectStatus.value == 'Completed'}" th:href="@{/project/complete/{id}(id=${project.projectCode})}"><button type="button" class="btn btn-info rounded-0 disabled-button">Complete</button></a>
+                                                    <a th:if="${project.projectStatus.value != 'Completed'}"
+                                                       th:href="@{/project/update/{id}(id=${project.projectCode})}"
+                                                       class="btn btn-warning rounded-0">Update
+                                                    </a>
+                                                    <a th:if="${project.projectStatus.value == 'Completed'}"
+                                                       class="btn btn-warning rounded-0 disabled-button">Update
+                                                    </a>
+                                                    <a th:href="@{/project/delete/{id}(id=${project.projectCode})}"
+                                                       class="btn btn-danger rounded-0">Delete
+                                                    </a>
+                                                    <a th:if="${project.projectStatus.value != 'Completed'}"
+                                                       th:href="@{/project/complete/{id}(id=${project.projectCode})}"
+                                                       class="btn btn-info rounded-0">Complete
+                                                    </a>
+                                                    <a th:if="${project.projectStatus.value == 'Completed'}"
+                                                       class="btn btn-info rounded-0 disabled-button">Complete
+                                                    </a>
                                                 </td>
                                             </tr>
                                             </tbody>
